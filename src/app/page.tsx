@@ -80,22 +80,22 @@ function LanguageToggle({ lang, onToggle }: { lang: Lang; onToggle: () => void }
       <span style={{
         padding: "6px 10px",
         fontSize: 10,
-        fontWeight: lang === "es" ? 700 : 400,
-        color: lang === "es" ? "#e2e8f0" : "#475569",
-        background: lang === "es" ? "#1a1f2e" : "transparent",
-        transition: "all 0.2s ease",
-      }}>
-        ES
-      </span>
-      <span style={{
-        padding: "6px 10px",
-        fontSize: 10,
         fontWeight: lang === "en" ? 700 : 400,
         color: lang === "en" ? "#e2e8f0" : "#475569",
         background: lang === "en" ? "#1a1f2e" : "transparent",
         transition: "all 0.2s ease",
       }}>
         EN
+      </span>
+      <span style={{
+        padding: "6px 10px",
+        fontSize: 10,
+        fontWeight: lang === "es" ? 700 : 400,
+        color: lang === "es" ? "#e2e8f0" : "#475569",
+        background: lang === "es" ? "#1a1f2e" : "transparent",
+        transition: "all 0.2s ease",
+      }}>
+        ES
       </span>
     </button>
   );
@@ -133,7 +133,7 @@ function LiveClock({ lang }: { lang: Lang }) {
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("overview");
-  const [lang, setLang] = useState<Lang>("es");
+  const [lang, setLang] = useState<Lang>("en");
 
   const tabDefs = [
     { id: "overview", label: t('tabOverview', lang) },

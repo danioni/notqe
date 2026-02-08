@@ -33,6 +33,8 @@ const translations = {
   },
   balanceSheet: { es: 'Balance de la Fed', en: 'Fed Balance Sheet' },
   balanceSheetSub: { es: 'Activos Totales ($T) — Histórico', en: 'Total Assets ($T) — Historical' },
+  injectionTitle: { es: 'Inyección por Mecanismo', en: 'Injection by Mechanism' },
+  injectionSubtitle: { es: 'Liquidez estimada inyectada por año ($B) — ¿Quién abrió qué grifo?', en: 'Estimated liquidity injected per year ($B) — Who opened which faucet?' },
 
   // Current readings metrics
   metFedFunds: { es: 'Tasa Fed Funds', en: 'Fed Funds Rate' },

@@ -1,9 +1,9 @@
 "use client";
 
 import {
-  BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceLine, ResponsiveContainer,
+  BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceLine, ResponsiveContainer, Legend,
 } from "recharts";
-import { srfUsageData, balanceSheetData, events } from "@/lib/data";
+import { srfUsageData, balanceSheetData, injectionByMechanism, events } from "@/lib/data";
 import { t, tBadgeSeverity, tBadgeStatus } from "@/lib/i18n";
 import type { Lang } from "@/lib/i18n";
 import { stealthMechanisms, stealthQeTitle, stealthQeSubtitle, mechLabels, tMechStatus } from "@/lib/stealthQE";
@@ -300,6 +300,55 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
             </AreaChart>
           </ResponsiveContainer>
         </div>
+      </div>
+
+      {/* Injection by Mechanism — Stacked Bar Chart */}
+      <div className="panel">
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+          <div>
+            <div style={{ fontSize: 12, fontWeight: 600, color: "#e2e8f0" }}>{t('injectionTitle', lang)}</div>
+            <div style={{ fontSize: 10, color: "#64748b" }}>{t('injectionSubtitle', lang)}</div>
+          </div>
+        </div>
+        <ResponsiveContainer width="100%" height={320}>
+          <BarChart data={injectionByMechanism} stackOffset="sign">
+            <CartesianGrid strokeDasharray="3 3" stroke="#1a1f2e" />
+            <XAxis dataKey="year" tick={{ fontSize: 10, fill: "#64748b" }} axisLine={{ stroke: "#1a1f2e" }} tickLine={false} />
+            <YAxis tick={{ fontSize: 10, fill: "#64748b" }} axisLine={{ stroke: "#1a1f2e" }} tickLine={false} label={{ value: '$B', position: 'insideTopLeft', fill: '#64748b', fontSize: 9 }} />
+            <Tooltip
+              contentStyle={{ background: "#0c0f16", border: "1px solid #1a1f2e", borderRadius: 6, fontSize: 11 }}
+              labelStyle={{ color: "#64748b", marginBottom: 4 }}
+              itemStyle={{ padding: "1px 0" }}
+              formatter={(value: number, name: string) => {
+                if (value === 0) return [null, null];
+                const labels: Record<string, string> = {
+                  qe: 'QE', spv: 'SPVs', fxSwaps: 'FX Swaps', onrrp: 'ON RRP Drainage',
+                  tga: 'TGA Drawdowns', srf: 'SRF', notqe: '"Not QE"', btfp: 'BTFP', buybacks: 'Buybacks',
+                };
+                return [`$${value}B`, labels[name] || name];
+              }}
+            />
+            <Legend
+              wrapperStyle={{ fontSize: 9, paddingTop: 8 }}
+              formatter={(value: string) => {
+                const labels: Record<string, string> = {
+                  qe: 'QE', spv: 'SPVs', fxSwaps: 'FX Swaps', onrrp: 'ON RRP',
+                  tga: 'TGA', srf: 'SRF', notqe: '"Not QE"', btfp: 'BTFP', buybacks: 'Buybacks',
+                };
+                return labels[value] || value;
+              }}
+            />
+            <Bar dataKey="qe" stackId="a" fill="#ef4444" />
+            <Bar dataKey="fxSwaps" stackId="a" fill="#3b82f6" />
+            <Bar dataKey="onrrp" stackId="a" fill="#64748b" />
+            <Bar dataKey="tga" stackId="a" fill="#f59e0b" />
+            <Bar dataKey="spv" stackId="a" fill="#a855f7" />
+            <Bar dataKey="notqe" stackId="a" fill="#f87171" />
+            <Bar dataKey="srf" stackId="a" fill="#fb923c" />
+            <Bar dataKey="btfp" stackId="a" fill="#6366f1" />
+            <Bar dataKey="buybacks" stackId="a" fill="#fbbf24" />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
 
       {/* Stealth QE Arsenal */}

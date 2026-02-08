@@ -458,6 +458,26 @@ export const srfUsageData: ChartDataPoint[] = [
   { year: 'Feb 26', value: 8.7 },
 ];
 
+// === INJECTION BY MECHANISM PER YEAR ($B) ===
+// Estimated annual stealth liquidity injection by mechanism
+export const injectionByMechanism = [
+  { year: '2008', qe: 600, spv: 30, fxSwaps: 580, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
+  { year: '2009', qe: 1150, spv: 0, fxSwaps: 200, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
+  { year: '2010', qe: 600, spv: 0, fxSwaps: 50, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
+  { year: '2011', qe: 600, spv: 0, fxSwaps: 100, onrrp: 0, tga: 200, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
+  { year: '2012', qe: 500, spv: 0, fxSwaps: 30, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
+  { year: '2013', qe: 1020, spv: 0, fxSwaps: 10, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
+  { year: '2014', qe: 450, spv: 0, fxSwaps: 5, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
+  { year: '2019', qe: 0, spv: 0, fxSwaps: 5, onrrp: 0, tga: 150, srf: 0, notqe: 500, btfp: 0, buybacks: 0 },
+  { year: '2020', qe: 3200, spv: 14, fxSwaps: 450, onrrp: 0, tga: 500, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
+  { year: '2021', qe: 1560, spv: 0, fxSwaps: 20, onrrp: 0, tga: 300, srf: 5, notqe: 0, btfp: 0, buybacks: 0 },
+  { year: '2022', qe: 0, spv: 0, fxSwaps: 10, onrrp: 600, tga: 0, srf: 2, notqe: 0, btfp: 0, buybacks: 0 },
+  { year: '2023', qe: 0, spv: 0, fxSwaps: 5, onrrp: 1200, tga: 300, srf: 3, notqe: 0, btfp: 165, buybacks: 0 },
+  { year: '2024', qe: 0, spv: 0, fxSwaps: 5, onrrp: 600, tga: 100, srf: 5, notqe: 0, btfp: 40, buybacks: 15 },
+  { year: '2025', qe: 0, spv: 0, fxSwaps: 10, onrrp: 100, tga: 50, srf: 75, notqe: 100, btfp: 0, buybacks: 20 },
+  { year: '2026', qe: 0, spv: 0, fxSwaps: 10, onrrp: 0, tga: 0, srf: 50, notqe: 150, btfp: 0, buybacks: 30 },
+];
+
 // === THREAT INDICATORS ===
 export const threatIndicators: ThreatIndicator[] = [
   { name: 'SRF Infrastructure', score: 91, level: 'Critical', detail: 'Cap removed. Unlimited allotment. Central clearing planned.' },
