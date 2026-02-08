@@ -101,7 +101,7 @@ function MechanismTimeline({ lang }: { lang: Lang }) {
       </div>
 
       {/* Mechanism entries on timeline */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 24 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 24 }}>
         {sorted.map((mech, i) => {
           const sColor = statusColorMap[mech.status] || '#64748b';
           const pct = ((mech.introduced - minYear) / range) * 100;
@@ -113,36 +113,41 @@ function MechanismTimeline({ lang }: { lang: Lang }) {
               </div>
 
               {/* Timeline bar showing "active since" */}
-              <div style={{ flex: 1, position: "relative", height: 24 }}>
-                <div style={{ position: "absolute", left: 0, right: 0, top: 11, height: 1, background: "#1a1f2e" }} />
+              <div style={{ flex: 1, position: "relative", height: 28 }}>
+                <div style={{ position: "absolute", left: 0, right: 0, top: 13, height: 1, background: "#1a1f2e" }} />
                 {/* Active span bar */}
                 <div style={{
-                  position: "absolute", left: `${pct}%`, right: 0, top: 8, height: 8,
+                  position: "absolute", left: `${pct}%`, right: 0, top: 10, height: 8,
                   background: `linear-gradient(90deg, ${mech.color}44, ${mech.color}${mech.status === 'active' ? '44' : '11'})`,
                   borderRadius: 2,
                   borderLeft: `2px solid ${mech.color}`,
                 }} />
                 {/* Dot at introduction point */}
                 <div style={{
-                  position: "absolute", left: `${pct}%`, top: 6, width: 12, height: 12,
+                  position: "absolute", left: `${pct}%`, top: 8, width: 12, height: 12,
                   borderRadius: "50%", background: mech.color, border: "2px solid #0c0f16",
                   transform: "translateX(-50%)",
                   boxShadow: mech.status === 'active' ? `0 0 8px ${mech.color}66` : 'none',
                 }} />
               </div>
 
-              {/* Mechanism name + status */}
-              <div style={{ width: 260, flexShrink: 0, display: "flex", alignItems: "center", gap: 6 }}>
-                <div style={{ fontSize: 10, color: "#e2e8f0", fontWeight: 500, flex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                  {mech.name[lang]}
+              {/* Mechanism name + detail + status */}
+              <div style={{ width: 320, flexShrink: 0 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <div style={{ fontSize: 10, color: "#e2e8f0", fontWeight: 500, flex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                    {mech.name[lang]}
+                  </div>
+                  <span style={{
+                    fontSize: 8, fontWeight: 700, color: sColor, letterSpacing: 0.5,
+                    padding: "1px 4px", borderRadius: 2, background: `${sColor}15`, border: `1px solid ${sColor}33`,
+                    flexShrink: 0,
+                  }}>
+                    {tMechStatus(mech.status, lang)}
+                  </span>
                 </div>
-                <span style={{
-                  fontSize: 8, fontWeight: 700, color: sColor, letterSpacing: 0.5,
-                  padding: "1px 4px", borderRadius: 2, background: `${sColor}15`, border: `1px solid ${sColor}33`,
-                  flexShrink: 0,
-                }}>
-                  {tMechStatus(mech.status, lang)}
-                </span>
+                <div style={{ fontSize: 9, color: "#06b6d4aa", marginTop: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                  {mech.introducedDetail[lang]}
+                </div>
               </div>
             </div>
           );
