@@ -2,8 +2,9 @@
 
 import {
   BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceLine, ResponsiveContainer, Legend,
+  ComposedChart, Line,
 } from "recharts";
-import { srfUsageData, balanceSheetData, injectionByMechanism, events } from "@/lib/data";
+import { srfUsageData, balanceSheetData, injectionByMechanism, escalationData, events } from "@/lib/data";
 import { t, tBadgeSeverity, tBadgeStatus } from "@/lib/i18n";
 import type { Lang } from "@/lib/i18n";
 import { stealthMechanisms, stealthQeTitle, stealthQeSubtitle, mechLabels, tMechStatus } from "@/lib/stealthQE";
@@ -354,6 +355,107 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
             <Bar dataKey="buybacks" stackId="a" fill="#fbbf24" />
           </BarChart>
         </ResponsiveContainer>
+      </div>
+
+      {/* Escalation Staircase — Growth Rate Chart */}
+      <div className="panel">
+        <div style={{ marginBottom: 16 }}>
+          <div style={{ fontSize: 12, fontWeight: 600, color: "#e2e8f0" }}>{t('escalationTitle', lang)}</div>
+          <div style={{ fontSize: 10, color: "#64748b" }}>{t('escalationSubtitle', lang)}</div>
+        </div>
+        <ResponsiveContainer width="100%" height={340}>
+          <ComposedChart data={escalationData}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#1a1f2e" />
+            <XAxis dataKey="year" tick={{ fontSize: 10, fill: "#64748b" }} axisLine={{ stroke: "#1a1f2e" }} tickLine={false} />
+            <YAxis
+              yAxisId="total"
+              tick={{ fontSize: 10, fill: "#64748b" }}
+              axisLine={{ stroke: "#1a1f2e" }}
+              tickLine={false}
+              label={{ value: '$B', position: 'insideTopLeft', fill: '#64748b', fontSize: 9 }}
+            />
+            <YAxis
+              yAxisId="pct"
+              orientation="right"
+              tick={{ fontSize: 10, fill: "#64748b" }}
+              axisLine={{ stroke: "#1a1f2e" }}
+              tickLine={false}
+              label={{ value: '%', position: 'insideTopRight', fill: '#64748b', fontSize: 9 }}
+            />
+            <Tooltip
+              contentStyle={{ background: "#0c0f16", border: "1px solid #1a1f2e", borderRadius: 6, fontSize: 11 }}
+              labelStyle={{ color: "#64748b", marginBottom: 4 }}
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              formatter={((value: any, name: any) => {
+                const labels: Record<string, string> = {
+                  total: lang === 'es' ? 'Total anual' : 'Annual total',
+                  cumulative: t('escalationCumulative', lang),
+                  growthPct: t('escalationGrowth', lang),
+                };
+                if (name === 'growthPct') return value !== null ? [`${value}%`, labels[name]] : [null, null];
+                return [`$${value}B`, labels[name] || name];
+              }) as any}
+            />
+            {/* Crisis markers */}
+            {escalationData.filter(d => d.crisis).map(d => (
+              <ReferenceLine
+                key={d.year}
+                x={d.year}
+                yAxisId="total"
+                stroke="#ef444466"
+                strokeDasharray="3 3"
+                label={{ value: d.crisis || '', fill: '#ef4444', fontSize: 8, position: 'top' }}
+              />
+            ))}
+            {/* Annual total — step line to show the "staircase" */}
+            <Area
+              yAxisId="total"
+              type="stepAfter"
+              dataKey="total"
+              fill="#ef444415"
+              stroke="#ef4444"
+              strokeWidth={2}
+              dot={{ fill: '#ef4444', r: 3 }}
+              name="total"
+            />
+            {/* Cumulative — shows the never-ending accumulation */}
+            <Line
+              yAxisId="total"
+              type="monotone"
+              dataKey="cumulative"
+              stroke="#3b82f6"
+              strokeWidth={1.5}
+              strokeDasharray="5 3"
+              dot={false}
+              name="cumulative"
+            />
+            {/* Growth rate % — right axis */}
+            <Bar
+              yAxisId="pct"
+              dataKey="growthPct"
+              fill="#f59e0b33"
+              stroke="#f59e0b"
+              strokeWidth={1}
+              barSize={14}
+              name="growthPct"
+            />
+          </ComposedChart>
+        </ResponsiveContainer>
+        {/* Legend manual — cleaner than Recharts Legend for this */}
+        <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 8, fontSize: 9, color: "#64748b" }}>
+          <span><span style={{ color: "#ef4444" }}>&#9608;</span> {lang === 'es' ? 'Total anual ($B)' : 'Annual total ($B)'}</span>
+          <span><span style={{ color: "#3b82f6" }}>---</span> {t('escalationCumulative', lang)} ($B)</span>
+          <span><span style={{ color: "#f59e0b" }}>&#9608;</span> {t('escalationGrowth', lang)} (%)</span>
+        </div>
+        {/* Insight callout */}
+        <div style={{
+          marginTop: 12, padding: "8px 14px", background: "#ef444409", border: "1px solid #ef444422",
+          borderRadius: 6, fontSize: 10, color: "#ef4444cc", lineHeight: 1.6,
+        }}>
+          {lang === 'es'
+            ? '&#9888; Patrón escalera confirmado: $3B (1962) → $75B (2001) → $1,320B (2008) → $4,214B (2020). Cada crisis multiplica el piso anterior por 10-50x. Los "recortes" post-crisis nunca regresan al nivel previo.'
+            : '&#9888; Staircase pattern confirmed: $3B (1962) → $75B (2001) → $1,320B (2008) → $4,214B (2020). Each crisis multiplies the previous floor by 10-50x. Post-crisis "drawdowns" never return to prior levels.'}
+        </div>
       </div>
 
       {/* Stealth QE Arsenal */}

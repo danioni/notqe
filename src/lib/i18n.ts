@@ -35,6 +35,11 @@ const translations = {
   balanceSheetSub: { es: 'Activos Totales ($T) — Histórico', en: 'Total Assets ($T) — Historical' },
   injectionTitle: { es: 'Inyección por Mecanismo', en: 'Injection by Mechanism' },
   injectionSubtitle: { es: 'Liquidez estimada inyectada por año ($B) — ¿Quién abrió qué grifo?', en: 'Estimated liquidity injected per year ($B) — Who opened which faucet?' },
+  escalationTitle: { es: 'Patrón de Escalera', en: 'Staircase Pattern' },
+  escalationSubtitle: { es: 'Total anual ($B) + tasa de crecimiento — Cada crisis sube el piso y nunca baja del todo', en: 'Annual total ($B) + growth rate — Each crisis raises the floor and it never fully comes back down' },
+  escalationCumulative: { es: 'Acumulado', en: 'Cumulative' },
+  escalationGrowth: { es: 'Crecimiento YoY', en: 'YoY Growth' },
+  escalationMechs: { es: 'mecanismos activos', en: 'active mechanisms' },
 
   // Current readings metrics
   metFedFunds: { es: 'Tasa Fed Funds', en: 'Fed Funds Rate' },

@@ -491,6 +491,39 @@ export const injectionByMechanism = [
   { year: '2026', qe: 0, spv: 0, fxSwaps: 10, onrrp: 0, tga: 0, srf: 50, notqe: 150, btfp: 0, buybacks: 30, dw: 3, omo: 0 },
 ];
 
+// === GROWTH RATE / ESCALATION STAIRCASE ===
+// Total injection per year + YoY growth rate + cumulative total + # of active mechanisms
+// Spoiler: it's a staircase — each crisis ratchets up and never fully comes back down
+export const escalationData = (() => {
+  const totals = injectionByMechanism.map(row => {
+    const { year, ...mechs } = row;
+    const total = Object.values(mechs).reduce((s, v) => s + (v as number), 0);
+    const activeMechs = Object.values(mechs).filter(v => (v as number) > 0).length;
+    return { year, total: Math.round(total), activeMechs };
+  });
+  let cumulative = 0;
+  return totals.map((row, i) => {
+    const prev = i > 0 ? totals[i - 1].total : 0;
+    const growthPct = prev > 0 ? Math.round(((row.total - prev) / prev) * 100) : null;
+    cumulative += row.total;
+    return {
+      year: row.year,
+      total: row.total,
+      growthPct,
+      cumulative: Math.round(cumulative),
+      activeMechs: row.activeMechs,
+      // Crisis annotations
+      crisis: row.year === '1987' ? 'Black Monday'
+            : row.year === '1998' ? 'LTCM'
+            : row.year === '2001' ? 'Dot-com'
+            : row.year === '2008' ? 'GFC'
+            : row.year === '2020' ? 'COVID'
+            : row.year === '2023' ? 'SVB'
+            : null,
+    };
+  });
+})();
+
 // === THREAT INDICATORS ===
 export const threatIndicators: ThreatIndicator[] = [
   { name: 'SRF Infrastructure', score: 91, level: 'Critical', detail: 'Cap removed. Unlimited allotment. Central clearing planned.' },
