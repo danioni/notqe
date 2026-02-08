@@ -319,14 +319,15 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
               contentStyle={{ background: "#0c0f16", border: "1px solid #1a1f2e", borderRadius: 6, fontSize: 11 }}
               labelStyle={{ color: "#64748b", marginBottom: 4 }}
               itemStyle={{ padding: "1px 0" }}
-              formatter={(value: number, name: string) => {
-                if (value === 0) return [null, null];
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              formatter={((value: any, name: any) => {
+                if (!value || value === 0) return [null, null];
                 const labels: Record<string, string> = {
                   qe: 'QE', spv: 'SPVs', fxSwaps: 'FX Swaps', onrrp: 'ON RRP Drainage',
                   tga: 'TGA Drawdowns', srf: 'SRF', notqe: '"Not QE"', btfp: 'BTFP', buybacks: 'Buybacks',
                 };
                 return [`$${value}B`, labels[name] || name];
-              }}
+              }) as any}
             />
             <Legend
               wrapperStyle={{ fontSize: 9, paddingTop: 8 }}
