@@ -323,6 +323,7 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
               formatter={((value: any, name: any) => {
                 if (!value || value === 0) return [null, null];
                 const labels: Record<string, string> = {
+                  omo: 'Open Market Ops', dw: 'Discount Window',
                   qe: 'QE', spv: 'SPVs', fxSwaps: 'FX Swaps', onrrp: 'ON RRP Drainage',
                   tga: 'TGA Drawdowns', srf: 'SRF', notqe: '"Not QE"', btfp: 'BTFP', buybacks: 'Buybacks',
                 };
@@ -333,12 +334,15 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
               wrapperStyle={{ fontSize: 9, paddingTop: 8 }}
               formatter={(value: string) => {
                 const labels: Record<string, string> = {
+                  omo: 'OMO', dw: 'Disc. Window',
                   qe: 'QE', spv: 'SPVs', fxSwaps: 'FX Swaps', onrrp: 'ON RRP',
                   tga: 'TGA', srf: 'SRF', notqe: '"Not QE"', btfp: 'BTFP', buybacks: 'Buybacks',
                 };
                 return labels[value] || value;
               }}
             />
+            <Bar dataKey="omo" stackId="a" fill="#06b6d4" />
+            <Bar dataKey="dw" stackId="a" fill="#14b8a6" />
             <Bar dataKey="qe" stackId="a" fill="#ef4444" />
             <Bar dataKey="fxSwaps" stackId="a" fill="#3b82f6" />
             <Bar dataKey="onrrp" stackId="a" fill="#64748b" />

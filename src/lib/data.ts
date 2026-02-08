@@ -459,23 +459,36 @@ export const srfUsageData: ChartDataPoint[] = [
 ];
 
 // === INJECTION BY MECHANISM PER YEAR ($B) ===
-// Estimated annual stealth liquidity injection by mechanism
+// Estimated annual liquidity injection by mechanism
+// Pre-2008: Discount Window lending, FX swaps, and open market operations (proto-QE)
+// omo = Open Market Operations (pre-QE era bond purchases), dw = Discount Window lending
 export const injectionByMechanism = [
-  { year: '2008', qe: 600, spv: 30, fxSwaps: 580, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
-  { year: '2009', qe: 1150, spv: 0, fxSwaps: 200, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
-  { year: '2010', qe: 600, spv: 0, fxSwaps: 50, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
-  { year: '2011', qe: 600, spv: 0, fxSwaps: 100, onrrp: 0, tga: 200, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
-  { year: '2012', qe: 500, spv: 0, fxSwaps: 30, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
-  { year: '2013', qe: 1020, spv: 0, fxSwaps: 10, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
-  { year: '2014', qe: 450, spv: 0, fxSwaps: 5, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
-  { year: '2019', qe: 0, spv: 0, fxSwaps: 5, onrrp: 0, tga: 150, srf: 0, notqe: 500, btfp: 0, buybacks: 0 },
-  { year: '2020', qe: 3200, spv: 14, fxSwaps: 450, onrrp: 0, tga: 500, srf: 0, notqe: 0, btfp: 0, buybacks: 0 },
-  { year: '2021', qe: 1560, spv: 0, fxSwaps: 20, onrrp: 0, tga: 300, srf: 5, notqe: 0, btfp: 0, buybacks: 0 },
-  { year: '2022', qe: 0, spv: 0, fxSwaps: 10, onrrp: 600, tga: 0, srf: 2, notqe: 0, btfp: 0, buybacks: 0 },
-  { year: '2023', qe: 0, spv: 0, fxSwaps: 5, onrrp: 1200, tga: 300, srf: 3, notqe: 0, btfp: 165, buybacks: 0 },
-  { year: '2024', qe: 0, spv: 0, fxSwaps: 5, onrrp: 600, tga: 100, srf: 5, notqe: 0, btfp: 40, buybacks: 15 },
-  { year: '2025', qe: 0, spv: 0, fxSwaps: 10, onrrp: 100, tga: 50, srf: 75, notqe: 100, btfp: 0, buybacks: 20 },
-  { year: '2026', qe: 0, spv: 0, fxSwaps: 10, onrrp: 0, tga: 0, srf: 50, notqe: 150, btfp: 0, buybacks: 30 },
+  // Pre-modern era — Fed interventions were smaller but set every precedent
+  { year: '1962', qe: 0, spv: 0, fxSwaps: 0.9, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 0.1, omo: 2 },
+  { year: '1970', qe: 0, spv: 0, fxSwaps: 3, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 1.5, omo: 5 },
+  { year: '1974', qe: 0, spv: 0, fxSwaps: 5, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 3.5, omo: 4 },
+  { year: '1980', qe: 0, spv: 0, fxSwaps: 8, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 7, omo: 6 },
+  { year: '1984', qe: 0, spv: 0, fxSwaps: 4, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 8, omo: 10 },
+  { year: '1987', qe: 0, spv: 0, fxSwaps: 3, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 5, omo: 22 },
+  { year: '1990', qe: 0, spv: 0, fxSwaps: 2, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 3, omo: 15 },
+  { year: '1998', qe: 0, spv: 0, fxSwaps: 15, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 2, omo: 30 },
+  { year: '2001', qe: 0, spv: 0, fxSwaps: 30, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 5, omo: 40 },
+  // Modern era — mechanisms multiply and volumes explode
+  { year: '2008', qe: 600, spv: 30, fxSwaps: 580, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 110, omo: 0 },
+  { year: '2009', qe: 1150, spv: 0, fxSwaps: 200, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 20, omo: 0 },
+  { year: '2010', qe: 600, spv: 0, fxSwaps: 50, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 5, omo: 0 },
+  { year: '2011', qe: 600, spv: 0, fxSwaps: 100, onrrp: 0, tga: 200, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 2, omo: 0 },
+  { year: '2012', qe: 500, spv: 0, fxSwaps: 30, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 1, omo: 0 },
+  { year: '2013', qe: 1020, spv: 0, fxSwaps: 10, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 0, omo: 0 },
+  { year: '2014', qe: 450, spv: 0, fxSwaps: 5, onrrp: 0, tga: 0, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 0, omo: 0 },
+  { year: '2019', qe: 0, spv: 0, fxSwaps: 5, onrrp: 0, tga: 150, srf: 0, notqe: 500, btfp: 0, buybacks: 0, dw: 0, omo: 0 },
+  { year: '2020', qe: 3200, spv: 14, fxSwaps: 450, onrrp: 0, tga: 500, srf: 0, notqe: 0, btfp: 0, buybacks: 0, dw: 50, omo: 0 },
+  { year: '2021', qe: 1560, spv: 0, fxSwaps: 20, onrrp: 0, tga: 300, srf: 5, notqe: 0, btfp: 0, buybacks: 0, dw: 2, omo: 0 },
+  { year: '2022', qe: 0, spv: 0, fxSwaps: 10, onrrp: 600, tga: 0, srf: 2, notqe: 0, btfp: 0, buybacks: 0, dw: 1, omo: 0 },
+  { year: '2023', qe: 0, spv: 0, fxSwaps: 5, onrrp: 1200, tga: 300, srf: 3, notqe: 0, btfp: 165, buybacks: 0, dw: 5, omo: 0 },
+  { year: '2024', qe: 0, spv: 0, fxSwaps: 5, onrrp: 600, tga: 100, srf: 5, notqe: 0, btfp: 40, buybacks: 15, dw: 1, omo: 0 },
+  { year: '2025', qe: 0, spv: 0, fxSwaps: 10, onrrp: 100, tga: 50, srf: 75, notqe: 100, btfp: 0, buybacks: 20, dw: 2, omo: 0 },
+  { year: '2026', qe: 0, spv: 0, fxSwaps: 10, onrrp: 0, tga: 0, srf: 50, notqe: 150, btfp: 0, buybacks: 30, dw: 3, omo: 0 },
 ];
 
 // === THREAT INDICATORS ===
