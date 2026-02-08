@@ -27,6 +27,10 @@ const translations = {
   srfSubtitle: { es: 'Standing Repo Facility ($B)', en: 'Standing Repo Facility ($B)' },
   srfRecord: { es: 'Récord $74.6B', en: 'Record $74.6B' },
   octRecord: { es: 'Récord Oct', en: 'Oct Record' },
+  srfContext: {
+    es: '¿Por qué importa? El SRF es el canario en la mina. Cuando los bancos necesitan liquidez overnight masiva, es señal de que el sistema no funciona sin intervención. El tope fue eliminado en Dic 2025 — ahora es ilimitado. Cada spike es un aviso: la adicción a la liquidez crece.',
+    en: 'Why does this matter? The SRF is the canary in the coal mine. When banks need massive overnight liquidity, it signals the system cannot function without intervention. The cap was removed Dec 2025 — now unlimited. Each spike is a warning: liquidity addiction is growing.',
+  },
   balanceSheet: { es: 'Balance de la Fed', en: 'Fed Balance Sheet' },
   balanceSheetSub: { es: 'Activos Totales ($T) — Histórico', en: 'Total Assets ($T) — Historical' },
 

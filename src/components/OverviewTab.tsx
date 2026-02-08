@@ -270,6 +270,9 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
               <Bar dataKey="value" fill="#ef4444" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
+          <div style={{ marginTop: 12, padding: "10px 14px", background: "#ef44440a", border: "1px solid #ef444422", borderRadius: 6, fontSize: 10, color: "#94a3b8", lineHeight: 1.7 }}>
+            {t('srfContext', lang)}
+          </div>
         </div>
 
         {/* Balance Sheet Chart */}
