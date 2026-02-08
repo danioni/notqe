@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Fed Watch — Vigilancia Monetaria",
-  description: "Sistema de vigilancia que documenta 50+ años de manipulación monetaria sistemática por parte de la Reserva Federal",
+  title: "Fed Watch — Monetary Surveillance",
+  description: "Surveillance system documenting 50+ years of systematic monetary manipulation by the Federal Reserve",
 };
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="en">
       <body>{children}</body>
     </html>
   );
