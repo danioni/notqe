@@ -78,7 +78,7 @@ export default function HistoryTab({ lang }: { lang: Lang }) {
       {/* Thesis Banner */}
       <div className="panel" style={{
         borderColor: "#ef444433", background: "linear-gradient(135deg, #0c0f16 0%, #120a0a 100%)",
-        textAlign: "center", padding: "24px 32px",
+        textAlign: "center", padding: "20px var(--page-padding)",
       }}>
         <div style={{ fontSize: 12, color: "#ef4444", fontWeight: 600, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>
           {t('centralThesis', lang)}

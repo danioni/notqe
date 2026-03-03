@@ -133,7 +133,7 @@ function MechanismTimeline({ lang }: { lang: Lang }) {
               </div>
 
               {/* Mechanism name + detail + status */}
-              <div style={{ width: 320, flexShrink: 0 }}>
+              <div className="mechanism-label">
                 <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                   <div style={{ fontSize: 10, color: "#e2e8f0", fontWeight: 500, flex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                     {mech.name[lang]}
@@ -184,7 +184,7 @@ function StealthQEPanel({ lang }: { lang: Lang }) {
         </div>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 10 }}>
+      <div className="grid-stealth">
         {stealthMechanisms.map((mech, i) => {
           const sColor = statusColorMap[mech.status] || '#64748b';
           return (
@@ -244,13 +244,13 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
         <h2 style={{ fontSize: 13, fontWeight: 600, color: "#94a3b8", marginBottom: 16, letterSpacing: 0.5 }}>
           {t('currentReadings', lang)}
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 12 }}>
+        <div className="grid-cards">
           {readings.map((r, i) => <MetricCard key={r.metric} {...r} index={i} />)}
         </div>
       </div>
 
       {/* Charts Row */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: 16 }}>
+      <div className="grid-charts">
         {/* SRF Usage Chart */}
         <div className="panel">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
@@ -260,17 +260,19 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
             </div>
             <span className="badge badge-critical">{t('srfRecord', lang)}</span>
           </div>
-          <ResponsiveContainer width="100%" height={220}>
-            <BarChart data={srfUsageData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1a1f2e" />
-              <XAxis dataKey="year" tick={{ fontSize: 10, fill: "#64748b" }} axisLine={{ stroke: "#1a1f2e" }} tickLine={false} />
-              <YAxis tick={{ fontSize: 10, fill: "#64748b" }} axisLine={{ stroke: "#1a1f2e" }} tickLine={false} />
-              <Tooltip content={<ChartTooltipB />} />
-              <ReferenceLine y={29.4} stroke="#f59e0b" strokeDasharray="4 4"
-                label={{ value: t('octRecord', lang), position: "right", fill: "#f59e0b", fontSize: 9 }} />
-              <Bar dataKey="value" fill="#ef4444" radius={[3, 3, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+          <div className="chart-sm">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={srfUsageData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#1a1f2e" />
+                <XAxis dataKey="year" tick={{ fontSize: 10, fill: "#64748b" }} axisLine={{ stroke: "#1a1f2e" }} tickLine={false} />
+                <YAxis tick={{ fontSize: 10, fill: "#64748b" }} axisLine={{ stroke: "#1a1f2e" }} tickLine={false} />
+                <Tooltip content={<ChartTooltipB />} />
+                <ReferenceLine y={29.4} stroke="#f59e0b" strokeDasharray="4 4"
+                  label={{ value: t('octRecord', lang), position: "right", fill: "#f59e0b", fontSize: 9 }} />
+                <Bar dataKey="value" fill="#ef4444" radius={[3, 3, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
           <div style={{ marginTop: 12, padding: "10px 14px", background: "#ef44440a", border: "1px solid #ef444422", borderRadius: 6, fontSize: 10, color: "#94a3b8", lineHeight: 1.7 }}>
             {t('srfContext', lang)}
           </div>
@@ -285,8 +287,9 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
             </div>
             <span className="badge badge-high">$6.44T ↑</span>
           </div>
-          <ResponsiveContainer width="100%" height={220}>
-            <AreaChart data={balanceSheetData}>
+          <div className="chart-sm">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={balanceSheetData}>
               <defs>
                 <linearGradient id="bsGrad" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#ef4444" stopOpacity={0.3} />
@@ -298,8 +301,9 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
               <YAxis tick={{ fontSize: 10, fill: "#64748b" }} axisLine={{ stroke: "#1a1f2e" }} tickLine={false} domain={[0, 10]} />
               <Tooltip content={<ChartTooltipB suffix="T" />} />
               <Area type="monotone" dataKey="value" stroke="#ef4444" fill="url(#bsGrad)" strokeWidth={2} />
-            </AreaChart>
-          </ResponsiveContainer>
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
 
@@ -311,8 +315,9 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
             <div style={{ fontSize: 10, color: "#64748b" }}>{t('injectionSubtitle', lang)}</div>
           </div>
         </div>
-        <ResponsiveContainer width="100%" height={320}>
-          <BarChart data={injectionByMechanism} stackOffset="sign">
+        <div className="chart-lg">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={injectionByMechanism} stackOffset="sign">
             <CartesianGrid strokeDasharray="3 3" stroke="#1a1f2e" />
             <XAxis dataKey="year" tick={{ fontSize: 10, fill: "#64748b" }} axisLine={{ stroke: "#1a1f2e" }} tickLine={false} />
             <YAxis tick={{ fontSize: 10, fill: "#64748b" }} axisLine={{ stroke: "#1a1f2e" }} tickLine={false} label={{ value: '$B', position: 'insideTopLeft', fill: '#64748b', fontSize: 9 }} />
@@ -353,8 +358,9 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
             <Bar dataKey="srf" stackId="a" fill="#fb923c" />
             <Bar dataKey="btfp" stackId="a" fill="#6366f1" />
             <Bar dataKey="buybacks" stackId="a" fill="#fbbf24" />
-          </BarChart>
-        </ResponsiveContainer>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
 
       {/* Escalation Staircase — Growth Rate Chart */}
@@ -363,8 +369,9 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
           <div style={{ fontSize: 12, fontWeight: 600, color: "#e2e8f0" }}>{t('escalationTitle', lang)}</div>
           <div style={{ fontSize: 10, color: "#64748b" }}>{t('escalationSubtitle', lang)}</div>
         </div>
-        <ResponsiveContainer width="100%" height={340}>
-          <ComposedChart data={escalationData}>
+        <div className="chart-xl">
+          <ResponsiveContainer width="100%" height="100%">
+            <ComposedChart data={escalationData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#1a1f2e" />
             <XAxis dataKey="year" tick={{ fontSize: 10, fill: "#64748b" }} axisLine={{ stroke: "#1a1f2e" }} tickLine={false} />
             <YAxis
@@ -439,8 +446,9 @@ export default function OverviewTab({ lang }: { lang: Lang }) {
               barSize={14}
               name="growthPct"
             />
-          </ComposedChart>
-        </ResponsiveContainer>
+            </ComposedChart>
+          </ResponsiveContainer>
+        </div>
         {/* Legend manual — cleaner than Recharts Legend for this */}
         <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 8, fontSize: 9, color: "#64748b" }}>
           <span><span style={{ color: "#ef4444" }}>&#9608;</span> {lang === 'es' ? 'Total anual ($B)' : 'Annual total ($B)'}</span>

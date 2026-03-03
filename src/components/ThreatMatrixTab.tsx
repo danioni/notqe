@@ -101,7 +101,7 @@ export default function ThreatMatrixTab({ lang }: { lang: Lang }) {
         <h2 style={{ fontSize: 13, fontWeight: 600, color: "#94a3b8", marginBottom: 16, letterSpacing: 0.5 }}>
           {t('indicatorBreakdown', lang)}
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: 12 }}>
+        <div className="grid-indicators">
           {indicators.map((indicator, i) => <IndicatorBar key={indicator.name} indicator={indicator} index={i} />)}
         </div>
       </div>
@@ -109,9 +109,9 @@ export default function ThreatMatrixTab({ lang }: { lang: Lang }) {
       {/* Distribution */}
       <div className="panel">
         <div style={{ fontSize: 12, fontWeight: 600, color: "#e2e8f0", marginBottom: 16 }}>{t('levelDistribution', lang)}</div>
-        <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+        <div className="distribution-cards">
           {distLabels.map((level) => (
-            <div key={level.label} style={{ flex: 1, minWidth: 120, background: "#0a0d14", border: `1px solid ${level.color}22`, borderRadius: 6, padding: "12px 16px", textAlign: "center" }}>
+            <div key={level.label} style={{ flex: 1, background: "#0a0d14", border: `1px solid ${level.color}22`, borderRadius: 6, padding: "12px 16px", textAlign: "center" }}>
               <div style={{ fontSize: 24, fontWeight: 700, color: level.color }}>{level.count}</div>
               <div style={{ fontSize: 10, color: "#64748b", marginTop: 2 }}>{level.label}</div>
             </div>
@@ -125,7 +125,7 @@ export default function ThreatMatrixTab({ lang }: { lang: Lang }) {
         <div style={{ fontSize: 12, color: "#94a3b8", lineHeight: 1.8, marginBottom: 16 }}>{t('conclusionText', lang)}</div>
 
         <div style={{ fontSize: 12, color: "#e2e8f0", fontWeight: 600, marginBottom: 12 }}>{t('ecosystemConnection', lang)}</div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 12 }}>
+        <div className="grid-ecosystem">
           <div style={{ background: "#0a0d14", border: "1px solid #1a1f2e", borderRadius: 6, padding: "12px 16px" }}>
             <div style={{ fontSize: 11, fontWeight: 600, color: "#3b82f6", marginBottom: 4 }}>losratios.com</div>
             <div style={{ fontSize: 10, color: "#64748b", lineHeight: 1.5 }}>{t('losratiosDesc', lang)}</div>

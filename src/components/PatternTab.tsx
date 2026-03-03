@@ -58,7 +58,7 @@ function PlaybookComparison({ lang }: { lang: Lang }) {
     <div className="panel">
       <div style={{ fontSize: 12, fontWeight: 600, color: "#e2e8f0", marginBottom: 4 }}>{t('playbookTitle', lang)}</div>
       <div style={{ fontSize: 10, color: "#64748b", marginBottom: 16 }}>{t('playbookDesc', lang)}</div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+      <div className="grid-playbook">
         <div>
           <div style={{ fontSize: 11, fontWeight: 600, color: "#64748b", marginBottom: 12, textAlign: "center", padding: "6px 0", background: "#0a0d14", borderRadius: 4 }}>
             {t('precedent', lang)}
@@ -127,14 +127,14 @@ function PhaseMap({ lang }: { lang: Lang }) {
         ))}
       </div>
 
-      <div style={{ display: "flex", gap: 8, overflow: "auto" }}>
+      <div className="phase-cards">
         {phaseKeys.map((phase, i) => {
           const isActive = phase.status === "active";
           const isCompleted = phase.status === "completed";
           const color = colorMap[phase.status];
           return (
             <div key={i} className={isActive ? "pulse-critical" : ""} style={{
-              flex: 1, minWidth: 160,
+              flex: 1,
               background: isActive ? "#ef44440a" : isCompleted ? "#10b98108" : "#0a0d14",
               border: `1px solid ${isActive ? "#ef444433" : isCompleted ? "#10b98122" : "#1a1f2e"}`,
               borderRadius: 8, padding: 14,
@@ -170,12 +170,13 @@ export default function PatternTab({ lang }: { lang: Lang }) {
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
       <RatchetVisual lang={lang} />
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: 16 }}>
+      <div className="grid-charts">
         <div className="panel">
           <div style={{ fontSize: 12, fontWeight: 600, color: "#e2e8f0", marginBottom: 4 }}>{t('bsRatchet', lang)}</div>
           <div style={{ fontSize: 10, color: "#64748b", marginBottom: 16 }}>{t('bsRatchetDesc', lang)}</div>
-          <ResponsiveContainer width="100%" height={250}>
-            <AreaChart data={balanceSheetData}>
+          <div className="chart-md">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={balanceSheetData}>
               <defs>
                 <linearGradient id="bsGrad2" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#ef4444" stopOpacity={0.3} />
@@ -190,31 +191,35 @@ export default function PatternTab({ lang }: { lang: Lang }) {
               <ReferenceLine y={3.8} stroke="#f59e0b" strokeDasharray="3 3" label={{ value: t('qtFloor', lang), position: "right", fill: "#f59e0b", fontSize: 8 }} />
               <ReferenceLine y={6.4} stroke="#ef4444" strokeDasharray="3 3" label={{ value: t('newFloor', lang), position: "right", fill: "#ef4444", fontSize: 8 }} />
               <Area type="monotone" dataKey="value" stroke="#ef4444" fill="url(#bsGrad2)" strokeWidth={2} />
-            </AreaChart>
-          </ResponsiveContainer>
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
         </div>
 
         <div className="panel">
           <div style={{ fontSize: 12, fontWeight: 600, color: "#e2e8f0", marginBottom: 4 }}>{t('fedFundsTitle', lang)}</div>
           <div style={{ fontSize: 10, color: "#64748b", marginBottom: 16 }}>{t('fedFundsDesc', lang)}</div>
-          <ResponsiveContainer width="100%" height={250}>
-            <LineChart data={fedFundsRateData}>
+          <div className="chart-md">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={fedFundsRateData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#1a1f2e" />
               <XAxis dataKey="year" tick={{ fontSize: 9, fill: "#64748b" }} axisLine={{ stroke: "#1a1f2e" }} tickLine={false} />
               <YAxis tick={{ fontSize: 9, fill: "#64748b" }} axisLine={{ stroke: "#1a1f2e" }} tickLine={false} domain={[0, 22]} />
               <Tooltip content={<ChartTooltip suffix="%" />} />
               <Line type="monotone" dataKey="value" stroke="#f59e0b" strokeWidth={2}
                 dot={{ fill: "#f59e0b", r: 3, stroke: "#f59e0b" }} activeDot={{ r: 5, fill: "#f59e0b" }} />
-            </LineChart>
-          </ResponsiveContainer>
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
 
       <div className="panel">
         <div style={{ fontSize: 12, fontWeight: 600, color: "#e2e8f0", marginBottom: 4 }}>{t('debtGdpTitle', lang)}</div>
         <div style={{ fontSize: 10, color: "#64748b", marginBottom: 16 }}>{t('debtGdpDesc', lang)}</div>
-        <ResponsiveContainer width="100%" height={220}>
-          <AreaChart data={debtToGdpData}>
+        <div className="chart-sm">
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={debtToGdpData}>
             <defs>
               <linearGradient id="debtGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#a855f7" stopOpacity={0.3} />
@@ -228,8 +233,9 @@ export default function PatternTab({ lang }: { lang: Lang }) {
             <ReferenceLine y={100} stroke="#ef4444" strokeDasharray="4 4"
               label={{ value: t('debtGdpRef', lang), position: "right", fill: "#ef4444", fontSize: 9 }} />
             <Area type="monotone" dataKey="value" stroke="#a855f7" fill="url(#debtGrad)" strokeWidth={2} />
-          </AreaChart>
-        </ResponsiveContainer>
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
       </div>
 
       <PlaybookComparison lang={lang} />

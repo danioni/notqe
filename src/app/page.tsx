@@ -150,10 +150,7 @@ export default function Home() {
         background: "rgba(6, 8, 12, 0.95)", backdropFilter: "blur(12px)",
         borderBottom: "1px solid #1a1f2e",
       }}>
-        <div style={{
-          maxWidth: 1400, margin: "0 auto", padding: "12px 24px",
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-        }}>
+        <div className="header-inner">
           <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
             <div>
               <h1 style={{
@@ -167,7 +164,9 @@ export default function Home() {
                 {t('subtitle', lang)}
               </div>
             </div>
-            <ThreatMeter score={compositeScore} lang={lang} />
+            <div className="threat-meter-header">
+              <ThreatMeter score={compositeScore} lang={lang} />
+            </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <LanguageToggle lang={lang} onToggle={() => setLang(lang === "es" ? "en" : "es")} />
@@ -176,10 +175,7 @@ export default function Home() {
         </div>
 
         {/* Tab Navigation */}
-        <div style={{
-          maxWidth: 1400, margin: "0 auto", padding: "0 24px",
-          display: "flex", gap: 0, borderTop: "1px solid #1a1f2e",
-        }}>
+        <div className="tab-nav">
           {tabDefs.map((tab) => (
             <button
               key={tab.id}
@@ -201,7 +197,7 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <main style={{ maxWidth: 1400, margin: "0 auto", padding: "24px" }} className="tab-content" key={`${activeTab}-${lang}`}>
+      <main className="main-content tab-content" key={`${activeTab}-${lang}`}>
         {activeTab === "overview" && <OverviewTab lang={lang} />}
         {activeTab === "history" && <HistoryTab lang={lang} />}
         {activeTab === "pattern" && <PatternTab lang={lang} />}
@@ -209,10 +205,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer style={{
-        borderTop: "1px solid #1a1f2e", padding: "20px 24px", textAlign: "center",
-        maxWidth: 1400, margin: "40px auto 0",
-      }}>
+      <footer className="footer-content">
         <div style={{ fontSize: 11, color: "#06b6d4", fontStyle: "italic", marginBottom: 8 }}>
           &ldquo;Chancellor on brink of second bailout for banks&rdquo;
           <span style={{ color: "#64748b", fontStyle: "normal" }}>
