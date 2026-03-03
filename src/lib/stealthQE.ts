@@ -56,15 +56,15 @@ export const stealthMechanisms: StealthMechanism[] = [
   {
     id: 'tga',
     name: { es: 'TGA Drawdowns (Cuenta del Tesoro)', en: 'TGA Drawdowns (Treasury Account)' },
-    status: 'standby',
+    status: 'active',
     injected: 'Variable',
     how: {
-      es: 'Cuando el Tesoro gasta de su General Account en la Fed, las reservas bancarias suben. Cada drawdown del TGA = inyección de liquidez. Usado repetidamente en techo de deuda — cuando el Tesoro no puede emitir, gasta el TGA.',
-      en: 'When Treasury spends from its General Account at the Fed, bank reserves rise. Each TGA drawdown = liquidity injection. Used repeatedly during debt ceiling — when Treasury can\'t issue, it spends the TGA.',
+      es: 'Cuando el Tesoro gasta de su General Account en la Fed, las reservas bancarias suben. Cada drawdown del TGA = inyección de liquidez. Activado por gasto militar masivo de la guerra EEUU-Irán ($65B+ estimado) + paquete suplementario de defensa en discusión en el Congreso.',
+      en: 'When Treasury spends from its General Account at the Fed, bank reserves rise. Each TGA drawdown = liquidity injection. Activated by massive US-Iran war military spending ($65B+ est.) + supplemental defense spending package under discussion in Congress.',
     },
     color: '#f59e0b',
     introduced: 2011,
-    introducedDetail: { es: 'Usado como herramienta desde crisis techo deuda 2011', en: 'Used as tool since 2011 debt ceiling crisis' },
+    introducedDetail: { es: 'Usado como herramienta desde crisis techo deuda 2011. Reactivado Mar 2026 (gasto militar)', en: 'Used as tool since 2011 debt ceiling crisis. Reactivated Mar 2026 (military spending)' },
   },
   {
     id: 'buybacks',
@@ -137,8 +137,8 @@ export const stealthMechanisms: StealthMechanism[] = [
     status: 'permanent',
     injected: 'Variable',
     how: {
-      es: 'La Fed presta dólares a bancos centrales extranjeros (BCE, BOJ, BOE, etc.) a cambio de su moneda. Exporta liquidez en dólares globalmente sin que aparezca en el balance sheet doméstico. Usadas masivamente en 2008 y 2020.',
-      en: 'The Fed lends dollars to foreign central banks (ECB, BOJ, BOE, etc.) in exchange for their currency. Exports dollar liquidity globally without appearing on domestic balance sheet. Used massively in 2008 and 2020.',
+      es: 'La Fed presta dólares a bancos centrales extranjeros (BCE, BOJ, BOE, etc.) a cambio de su moneda. Exporta liquidez en dólares globalmente sin que aparezca en el balance sheet doméstico. Usadas masivamente en 2008 y 2020. Probable activación por disrupciones del conflicto EEUU-Irán en mercados energéticos globales.',
+      en: 'The Fed lends dollars to foreign central banks (ECB, BOJ, BOE, etc.) in exchange for their currency. Exports dollar liquidity globally without appearing on domestic balance sheet. Used massively in 2008 and 2020. Likely activation from US-Iran conflict disruptions in global energy markets.',
     },
     color: '#3b82f6',
     introduced: 1962,

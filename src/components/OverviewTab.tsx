@@ -14,14 +14,14 @@ const statusColors: Record<string, string> = { critical: "#ef4444", warning: "#f
 // Build translated readings dynamically
 function getReadings(lang: Lang) {
   return [
-    { metric: t('metFedFunds', lang), value: '3.50-3.75%', note: t('noteFedFunds', lang), status: 'warning' },
+    { metric: t('metFedFunds', lang), value: '3.50-3.75%', note: t('noteFedFunds', lang), status: 'critical' },
     { metric: t('metSrfCap', lang), value: t('valUnlimited', lang), note: t('noteSrfCap', lang), status: 'critical' },
     { metric: t('metQtStatus', lang), value: t('valEnded', lang), note: t('noteQtStatus', lang), status: 'critical' },
     { metric: t('metBalanceSheet', lang), value: '$6.44T', note: t('noteBalanceSheet', lang), status: 'warning' },
     { metric: t('metBankReserves', lang), value: '$2.81T', note: t('noteBankReserves', lang), status: 'warning' },
     { metric: t('metOnRrp', lang), value: '$6B', note: t('noteOnRrp', lang), status: 'critical' },
     { metric: t('metNotQe', lang), value: t('valActive', lang), note: t('noteNotQe', lang), status: 'critical' },
-    { metric: t('metWarsh', lang), value: t('valPending', lang), note: t('noteWarsh', lang), status: 'info' },
+    { metric: t('metWar', lang), value: t('valActive', lang), note: t('noteWar', lang), status: 'critical' },
     { metric: t('metPatternMatch', lang), value: '95%', note: t('notePatternMatch', lang), status: 'critical' },
   ];
 }

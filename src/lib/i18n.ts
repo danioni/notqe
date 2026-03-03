@@ -49,18 +49,18 @@ const translations = {
   metBankReserves: { es: 'Reservas Bancarias', en: 'Bank Reserves' },
   metOnRrp: { es: 'ON RRP', en: 'ON RRP' },
   metNotQe: { es: "Compras 'No QE'", en: "'Not QE' Purchases" },
-  metWarsh: { es: 'Warsh', en: 'Warsh' },
+  metWar: { es: 'Guerra EEUU-Irán', en: 'US-Iran War' },
   metPatternMatch: { es: 'Match Patrón 2019', en: '2019 Pattern Match' },
 
   // Current readings notes
-  noteFedFunds: { es: '2 disidentes a favor de recortes', en: '2 dissenters favor cuts' },
+  noteFedFunds: { es: 'Recortes complicados por inflación bélica', en: 'Cuts complicated by war inflation' },
   noteSrfCap: { es: 'Eliminado Dic 2025', en: 'Removed Dec 2025' },
   noteQtStatus: { es: 'Dic 2025', en: 'Dec 2025' },
   noteBalanceSheet: { es: 'Expandiéndose ↑', en: 'Expanding ↑' },
   noteBankReserves: { es: "Cerca de zona 'escasa'", en: "Near 'scarce' zone" },
   noteOnRrp: { es: 'Buffer agotado (era $2.5T)', en: 'Buffer depleted (was $2.5T)' },
   noteNotQe: { es: 'Bonos de corto plazo', en: 'Short-dated bonds' },
-  noteWarsh: { es: 'Asume Mayo 2026', en: 'Assumes May 2026' },
+  noteWar: { es: 'Ormuz cerrado. Petróleo +9%. Costo $65B+', en: 'Hormuz closed. Oil +9%. $65B+ cost' },
   notePatternMatch: { es: "Estrés repo → 'no QE' → QE", en: "Repo stress → 'not QE' → QE" },
 
   // Values
@@ -161,9 +161,11 @@ const translations = {
   tiBs: { es: 'Dirección del Balance Sheet', en: 'Balance Sheet Direction' },
   tiBsDetail: { es: "QT terminó. Expandiéndose vía 'gestión de reservas'.", en: "QT ended. Expanding via 'reserve management.'" },
   tiPolitical: { es: 'Presión Política', en: 'Political Pressure' },
-  tiPoliticalDetail: { es: 'Nominación de Warsh + disidencia FOMC creciente.', en: 'Warsh nomination + FOMC dissent growing.' },
+  tiPoliticalDetail: { es: 'Nominación Warsh + disidencia FOMC + guerra presiona decisiones de tasas.', en: 'Warsh nomination + FOMC dissent + war pressures rate decisions.' },
   tiPattern: { es: 'Match de Patrón Histórico', en: 'Historical Pattern Match' },
   tiPatternDetail: { es: "Secuencia actual coincide con repo 2019 → 'no QE' → QE exactamente.", en: "Current sequence matches 2019 repo → 'not QE' → QE exactly." },
+  tiGeopolitical: { es: 'Catalizador Geopolítico', en: 'Geopolitical Catalyst' },
+  tiGeopoliticalDetail: { es: 'Guerra EEUU-Irán. Ormuz cerrado. Petróleo +9%. Doble shock inflacionario (guerra + aranceles). Gasto defensa ~$65B.', en: 'US-Iran war. Strait of Hormuz closed. Oil +9%. Dual inflation shock (war + tariffs). Emergency defense spending ~$65B.' },
 
   // Threat levels for indicators
   lvlCritical: { es: 'Crítico', en: 'Critical' },
@@ -180,8 +182,8 @@ const translations = {
   // Conclusion
   conclusion: { es: 'CONCLUSIÓN', en: 'CONCLUSION' },
   conclusionText: {
-    es: 'La infraestructura para la próxima expansión monetaria ya está construida. El SRF ha sido destopeado, QT terminó, las compras "no QE" están activas, y el match de patrón histórico con 2019 es del 95%. La única variable faltante es el catalizador — y los catalizadores nunca son difíciles de encontrar.',
-    en: 'The infrastructure for the next monetary expansion is already built. The SRF has been uncapped, QT has ended, "not QE" purchases are active, and the historical pattern match with 2019 is at 95%. The only missing variable is the catalyst — and catalysts are never hard to find.',
+    es: 'La infraestructura para la próxima expansión monetaria ya está construida. El SRF ha sido destopeado, QT terminó, las compras "no QE" están activas, y el match de patrón histórico con 2019 es del 95%. El catalizador ha llegado: la guerra EEUU-Irán fuerza gasto militar masivo ($65B+), cierra el Estrecho de Ormuz, dispara el petróleo, y crea un doble shock inflacionario que atrapa a la Fed entre subir tasas y monetizar deuda de guerra.',
+    en: 'The infrastructure for the next monetary expansion is already built. The SRF has been uncapped, QT has ended, "not QE" purchases are active, and the historical pattern match with 2019 is at 95%. The catalyst has arrived: the US-Iran war forces massive military spending ($65B+), closes the Strait of Hormuz, spikes oil, and creates a dual inflation shock that traps the Fed between raising rates and monetizing war debt.',
   },
   ecosystemConnection: { es: 'Conexión al Ecosistema', en: 'Ecosystem Connection' },
   ecosystemFlow: {

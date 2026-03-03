@@ -69,8 +69,8 @@ export const events: HistoricalEvent[] = [
     mechanism: 'Geopolitical Arrangement',
     amount: 'Structural',
     status: 'eroding',
-    consequence: 'Allowed US to export inflation globally. Every oil-importing nation forced to hold dollars.',
-    btcRelevance: 'De-dollarization trend (BRICS) weakens this pillar. BTC benefits as alternative reserve.',
+    consequence: 'Allowed US to export inflation globally. Every oil-importing nation forced to hold dollars. US-Iran war (2026) directly threatens this arrangement — Hormuz closure disrupts the oil-dollar nexus.',
+    btcRelevance: 'De-dollarization trend (BRICS) weakens this pillar. War with Iran accelerates erosion. BTC benefits as alternative reserve.',
   },
   {
     id: 3,
@@ -387,6 +387,21 @@ export const events: HistoricalEvent[] = [
     consequence: 'More participants, more volume, more stealth liquidity capacity.',
     btcRelevance: "They're not dismantling the backdoor — they're upgrading it.",
   },
+  {
+    id: 25,
+    date: 'Feb 28, 2026',
+    era: 6,
+    eraName: 'Current Cycle',
+    title: 'US-Iran War Begins — The Catalyst Arrives',
+    description: "US and Israel launch coordinated strikes on Iran (Operation Epic Fury / Roaring Lion). Strait of Hormuz effectively closed — 20% of global oil supply disrupted. Oil surges 9%+, Treasuries sell off, global bond rout begins. Estimated direct military cost: $40-95B. Congress already discussing emergency supplemental defense spending. The 'missing catalyst' from the threat matrix is no longer missing.",
+    severity: 'critical',
+    mechanism: 'Geopolitical Shock + Fiscal Expansion',
+    amount: '$65B+ est. military cost',
+    status: 'active',
+    consequence: 'Dual inflation shock (war + tariffs) traps Fed between cutting and holding. Treasury forced to issue massively to fund operations. TGA drawdowns activate. Rate cut bets slashed — traders now see ~50% odds of more than one cut in 2026.',
+    btcRelevance: 'Wars = deficit spending = debt issuance = eventual monetization. Every major conflict since 1971 has ended with monetary expansion. BTC is the exit from the war-debt-debasement cycle.',
+    isAlert: true,
+  },
 ];
 
 // === CHART DATA ===
@@ -530,22 +545,23 @@ export const threatIndicators: ThreatIndicator[] = [
   { name: 'Narrative vs Reality Gap', score: 88, level: 'Critical', detail: "'Not QE' purchases active while talking hawkish. 2019 playbook." },
   { name: 'Reserve Scarcity', score: 78, level: 'Elevated', detail: "Reserves $2.81T — near Waller's 10% GDP threshold." },
   { name: 'Balance Sheet Direction', score: 65, level: 'Warning', detail: "QT ended. Expanding via 'reserve management.'" },
-  { name: 'Political Pressure', score: 70, level: 'Warning', detail: 'Warsh nomination + FOMC dissent growing.' },
+  { name: 'Political Pressure', score: 82, level: 'Critical', detail: 'Warsh nomination + FOMC dissent + war pressures rate decisions.' },
   { name: 'Historical Pattern Match', score: 95, level: 'Critical', detail: "Current sequence matches 2019 repo → 'not QE' → QE exactly." },
+  { name: 'Geopolitical Catalyst', score: 92, level: 'Critical', detail: 'US-Iran war. Strait of Hormuz closed. Oil +9%. Dual inflation shock (war + tariffs). Emergency defense spending ~$65B.' },
 ];
 
-export const compositeScore = 81;
+export const compositeScore = 87;
 
 // === CURRENT READINGS ===
 export const currentReadings = [
-  { metric: 'Fed Funds Rate', value: '3.50-3.75%', note: '2 dissenters favor cuts', status: 'warning' as const },
+  { metric: 'Fed Funds Rate', value: '3.50-3.75%', note: 'Cuts complicated by war inflation', status: 'critical' as const },
   { metric: 'SRF Cap', value: 'UNLIMITED', note: 'Removed Dec 2025', status: 'critical' as const },
   { metric: 'QT Status', value: 'ENDED', note: 'Dec 2025', status: 'critical' as const },
   { metric: 'Fed Balance Sheet', value: '$6.44T', note: 'Expanding ↑', status: 'warning' as const },
   { metric: 'Bank Reserves', value: '$2.81T', note: "Near 'scarce' zone", status: 'warning' as const },
   { metric: 'ON RRP', value: '$6B', note: 'Buffer depleted (was $2.5T)', status: 'critical' as const },
   { metric: "'Not QE' Purchases", value: 'ACTIVE', note: 'Short-dated bonds', status: 'critical' as const },
-  { metric: 'Warsh', value: 'PENDING', note: 'Assumes May 2026', status: 'info' as const },
+  { metric: 'US-Iran War', value: 'ACTIVE', note: 'Hormuz closed. Oil +9%. $65B+ cost', status: 'critical' as const },
   { metric: '2019 Pattern Match', value: '95%', note: "Repo stress → 'not QE' → QE", status: 'critical' as const },
 ];
 
@@ -572,7 +588,7 @@ export const playbook2025 = [
   { step: 2, date: 'Dec 2025', event: "QT ends. SRF cap eliminated. 'Routine.'" },
   { step: 3, date: 'Dec 2025', event: "Fed buys short-dated bonds. 'NOT QE' again." },
   { step: 4, date: 'Jan 2026', event: 'Balance sheet rising. Warsh nominated.' },
-  { step: 5, date: '???', event: 'Crisis? → QE? The backdoor is already built.' },
+  { step: 5, date: 'Feb 28, 2026', event: 'US-Iran war. Hormuz closed. Oil +9%. The catalyst arrived.' },
 ];
 
 // === RATCHET EFFECT DATA ===

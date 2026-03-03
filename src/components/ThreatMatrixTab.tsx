@@ -11,8 +11,9 @@ function getIndicators(lang: Lang) {
     { name: t('tiNarrative', lang), score: 88, level: t('lvlCritical', lang), detail: t('tiNarrativeDetail', lang) },
     { name: t('tiReserves', lang), score: 78, level: t('lvlElevated', lang), detail: t('tiReservesDetail', lang) },
     { name: t('tiBs', lang), score: 65, level: t('lvlWarning', lang), detail: t('tiBsDetail', lang) },
-    { name: t('tiPolitical', lang), score: 70, level: t('lvlWarning', lang), detail: t('tiPoliticalDetail', lang) },
+    { name: t('tiPolitical', lang), score: 82, level: t('lvlCritical', lang), detail: t('tiPoliticalDetail', lang) },
     { name: t('tiPattern', lang), score: 95, level: t('lvlCritical', lang), detail: t('tiPatternDetail', lang) },
+    { name: t('tiGeopolitical', lang), score: 92, level: t('lvlCritical', lang), detail: t('tiGeopoliticalDetail', lang) },
   ];
 }
 
